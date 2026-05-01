@@ -1,0 +1,580 @@
+11.Create class that contains methods to perform mathematical operations. Then create a menu from which user enters the choice and respectively methods will be called from the class.
+
+1.	Addition
+2.	Subtraction
+3.	Multiplication
+4.	Division
+5.	Integer Division
+code:
+class Calculator:
+
+    def addition(self, a, b):
+        return a + b
+
+    def subtraction(self, a, b):
+        return a - b
+
+    def multiplication(self, a, b):
+        return a * b
+
+    def division(self, a, b):
+        if b == 0:
+            return "Cannot divide by zero"
+        return a / b
+
+    def integer_division(self, a, b):
+        if b == 0:
+            return "Cannot divide by zero"
+        return a // b
+
+
+# Create object
+calc = Calculator()
+
+while True:
+    print("\n--- MENU ---")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Integer Division")
+    print("6. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 6:
+        print("Exiting program...")
+        break
+
+    a = float(input("Enter first number: "))
+    b = float(input("Enter second number: "))
+
+    if choice == 1:
+        print("Result:", calc.addition(a, b))
+
+    elif choice == 2:
+        print("Result:", calc.subtraction(a, b))
+
+    elif choice == 3:
+        print("Result:", calc.multiplication(a, b))
+
+    elif choice == 4:
+        print("Result:", calc.division(a, b))
+
+    elif choice == 5:
+        print("Result:", calc.integer_division(a, b))
+
+    else:
+        print("Invalid choice! Please try again.")
+
+==================================================================================================
+
+12.Create a class BankAccount with one constructor that initializes balance =0 and two methods withdraw() and deposit().  When object is created proper functionality should be performed by each method respectively. In withdraw method, when user try to withdraw money beyond its minimum balance then print appropriate message.
+code:class BankAccount:
+
+    def __init__(self):
+        self.balance = 0   # initialize balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+        print("Amount Deposited:", amount)
+        print("Current Balance:", self.balance)
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient balance! Cannot withdraw.")
+        else:
+            self.balance -= amount
+            print("Amount Withdrawn:", amount)
+            print("Current Balance:", self.balance)
+
+
+# Create object
+acc = BankAccount()
+
+while True:
+    print("\n--- BANK MENU ---")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        amt = float(input("Enter amount to deposit: "))
+        acc.deposit(amt)
+
+    elif choice == 2:
+        amt = float(input("Enter amount to withdraw: "))
+        acc.withdraw(amt)
+
+    elif choice == 3:
+        print("Thank you!")
+        break
+
+    else:
+        print("Invalid choice!") 
+
+==============================================================================================================
+
+2.Create a class to enter 3 different values and find out largest of three out of them.
+code:
+class Largest:
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+        self.c = 0
+
+    def input_values(self):
+        self.a = int(input("Enter first number: "))
+        self.b = int(input("Enter second number: "))
+        self.c = int(input("Enter third number: "))
+
+    def find_largest(self):
+        if self.a >= self.b and self.a >= self.c:
+            print("Largest number is:", self.a)
+        elif self.b >= self.a and self.b >= self.c:
+            print("Largest number is:", self.b)
+        else:
+            print("Largest number is:", self.c)
+
+
+# Object creation
+obj = Largest()
+obj.input_values()
+obj.find_largest()
+
+=============================================================================================================
+ 
+3.Create a d class which as 2 lists as a member of them. Print the list whose sum is higher than another.
+code:
+class CompareLists:
+
+    def __init__(self):
+        self.list1 = []
+        self.list2 = []
+
+    def input_lists(self):
+        self.list1 = list(map(int, input("Enter elements of list1: ").split()))
+        self.list2 = list(map(int, input("Enter elements of list2: ").split()))
+
+    def compare_lists(self):
+        sum1 = sum(self.list1)
+        sum2 = sum(self.list2)
+
+        if sum1 > sum2:
+            print("List with higher sum is:", self.list1)
+        elif sum2 > sum1:
+            print("List with higher sum is:", self.list2)
+        else:
+            print("Both lists have equal sum")
+
+
+# Object creation
+obj = CompareLists()
+obj.input_lists()
+obj.compare_lists()
+
+----------------------------------------------------------------------------
+class CompareLists:
+    def __init__(self, list1, list2):
+        self.list1 = list1
+        self.list2 = list2
+
+    def compare(self):
+        sum1 = sum(self.list1)
+        sum2 = sum(self.list2)
+
+        if sum1 > sum2:
+            print("List1 has higher sum:", self.list1)
+        elif sum2 > sum1:
+            print("List2 has higher sum:", self.list2)
+        else:
+            print("Both lists have equal sum")
+
+
+# Taking input
+l1 = list(map(int, input("Enter elements of list1: ").split()))
+l2 = list(map(int, input("Enter elements of list2: ").split()))
+
+# Object creation
+obj = CompareLists(l1, l2)
+obj.compare()
+
+============================================================================================
+
+4.Create a class with following fields. ID, Name, Sub1, Sub2, Total and percentage. Id, name, sub1 and sub2 will be entered by the user, calculate total and percentage by your own
+code:
+class Student:
+
+    def __init__(self):
+        self.id = input("Enter ID: ")
+        self.name = input("Enter Name: ")
+        self.sub1 = float(input("Enter marks of Subject 1: "))
+        self.sub2 = float(input("Enter marks of Subject 2: "))
+
+        # Calculate total and percentage
+        self.total = self.sub1 + self.sub2
+        self.percentage = self.total / 2
+
+    def display(self):
+        print("\n--- Student Details ---")
+        print("ID:", self.id)
+        print("Name:", self.name)
+        print("Subject 1 Marks:", self.sub1)
+        print("Subject 2 Marks:", self.sub2)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage, "%")
+
+
+# Object creation
+s1 = Student()
+s1.display()
+----------------------------------------------------------------------------
+class Student:
+    def __init__(self, id, name, sub1, sub2):
+        self.id = id
+        self.name = name
+        self.sub1 = sub1
+        self.sub2 = sub2
+        self.total = 0
+        self.percentage = 0
+
+    def calculate(self):
+        self.total = self.sub1 + self.sub2
+        self.percentage = self.total / 2
+
+    def display(self):
+        print("\n--- Student Details ---")
+        print("ID:", self.id)
+        print("Name:", self.name)
+        print("Subject 1 Marks:", self.sub1)
+        print("Subject 2 Marks:", self.sub2)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage, "%")
+
+
+# Taking input
+id = int(input("Enter ID: "))
+name = input("Enter Name: ")
+sub1 = float(input("Enter marks of Subject 1: "))
+sub2 = float(input("Enter marks of Subject 2: "))
+
+# Object creation
+s = Student(id, name, sub1, sub2)
+
+# Calculate & display
+s.calculate()
+s.display()
+
+============================================================================================================
+
+3.Create a class which ask a number from the user. If the number is even then find factorial of it and if odd then print a series from that number to 1.
+Example: if input is 4 then ans is 24 but if the number is 7 then answer is 7 6 5 4 3 2 1 
+code:
+class NumberOperation:
+
+    def __init__(self):
+        self.num = int(input("Enter a number: "))
+
+    def check(self):
+        if self.num % 2 == 0:
+            self.factorial()
+        else:
+            self.series()
+
+    def factorial(self):
+        fact = 1
+        for i in range(1, self.num + 1):
+            fact *= i
+        print("Factorial is:", fact)
+
+    def series(self):
+        print("Series:", end=" ")
+        for i in range(self.num, 0, -1):
+            print(i, end=" ")
+
+
+# Object creation
+obj = NumberOperation()
+obj.check()
+
+==========================================================================================================
+10.Create a class Area and write appropriate methods to calculate area of circle, 
+code:
+class Area:
+
+    # Method to calculate area of circle
+    def circle(self):
+        r = float(input("Enter radius: "))
+        area = 3.14 * r * r
+        print("Area of Circle:", area)
+
+
+# Object creation
+a1 = Area()
+
+# Method call
+a1.circle()
+
+================================================================================================================
+
+9.Create a class Student , with following methods:
+a.getDetails() method will take user input for getting student personal information, Name, City.
+b.viewDetails() methods will display all information of student.
+Inherit Student class into Result class, is having following methods
+•getMarks() method will take user input for 3 subject marks.
+•calResult() method will calculate percentage and find grad of student.
+•viewDetails() – Override this method to display result of student.
+
+code:
+class Student:
+
+    # Method to get personal details
+    def getDetails(self):
+        self.name = input("Enter Name: ")
+        self.city = input("Enter City: ")
+
+    # Method to display student details
+    def viewDetails(self):
+        print("\n--- Student Details ---")
+        print("Name:", self.name)
+        print("City:", self.city)
+
+
+# Inheriting Student class
+class Result(Student):
+
+    # Method to get marks
+    def getMarks(self):
+        self.m1 = float(input("Enter marks of Subject 1: "))
+        self.m2 = float(input("Enter marks of Subject 2: "))
+        self.m3 = float(input("Enter marks of Subject 3: "))
+
+    # Method to calculate result
+    def calResult(self):
+        self.total = self.m1 + self.m2 + self.m3
+        self.percentage = self.total / 3
+
+        # Grade calculation
+        if self.percentage >= 75:
+            self.grade = "A"
+        elif self.percentage >= 60:
+            self.grade = "B"
+        elif self.percentage >= 50:
+            self.grade = "C"
+        else:
+            self.grade = "Fail"
+
+    # Overriding viewDetails()
+    def viewDetails(self):
+        print("\n--- Student Result ---")
+        print("Name:", self.name)
+        print("City:", self.city)
+        print("Marks:", self.m1, self.m2, self.m3)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage)
+        print("Grade:", self.grade)
+
+
+# Object creation
+r1 = Result()
+
+# Method calls
+r1.getDetails()
+r1.getMarks()
+r1.calResult()
+r1.viewDetails()
+===========================================================================
+code:
+class Account:
+
+    def __init__(self):
+        self.balance = 0
+
+    # Deposit method
+    def deposit(self):
+        amount = float(input("Enter amount to deposit: "))
+        self.balance += amount
+        print("Deposited:", amount)
+        print("Balance:", self.balance)
+
+    # Withdraw method (generic - overridden in subclasses)
+    def withdraw(self):
+        pass
+
+    # Interest method (overridden in subclasses)
+    def interest(self):
+        pass
+
+
+# Saving Account
+class SavingAccount(Account):
+
+    def withdraw(self):
+        amount = float(input("Enter amount to withdraw: "))
+        if self.balance - amount < 1000:
+            print("Minimum balance Rs.1000 must be maintained!")
+        else:
+            self.balance -= amount
+            print("Withdrawn:", amount)
+            print("Balance:", self.balance)
+
+    def interest(self):
+        interest = (self.balance * 10) / 100
+        print("Interest (10%):", interest)
+
+
+# Current Account
+class CurrentAccount(Account):
+
+    def withdraw(self):
+        amount = float(input("Enter amount to withdraw: "))
+        if self.balance - amount < 10000:
+            print("Minimum balance Rs.10000 must be maintained!")
+        else:
+            self.balance -= amount
+            print("Withdrawn:", amount)
+            print("Balance:", self.balance)
+
+    def interest(self):
+        interest = (self.balance * 15) / 100
+        print("Interest (15%):", interest)
+
+
+# Menu system
+acc_type = input("Enter Account Type (SA/CA): ").upper()
+
+if acc_type == "SA":
+    acc = SavingAccount()
+elif acc_type == "CA":
+    acc = CurrentAccount()
+else:
+    print("Invalid account type!")
+    exit()
+
+while True:
+    print("\n--- Menu ---")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Calculate Interest")
+    print("4. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        acc.deposit()
+
+    elif choice == 2:
+        acc.withdraw()
+
+    elif choice == 3:
+        acc.interest()
+
+    elif choice == 4:
+        print("Exit")
+        break
+
+    else:
+        print("Invalid choice!")
+---------------------------------------------------------------------------------
+6.Define a Super class Account with methods interest(), deposit() and withdraw(). 
+
+•	interest() method will calculate interest based on the available balance in the account (for saving account interest is 10% and for current account 15%) .
+•	deposit() method will perform the deposit operation.
+•	withdraw() method will perform the withdraw operation and also put a check for minimum balance, if someone try to withdraw beyond some minimum balance then this method should print appropriate message.
+
+** minimum balance in case of saving account is Rs.1000 and Rs. 10000 is for current type of account.
+
+Defne two subclasses from Account class SavingAccount and CurrentAccount to inherit the Account class properties. 
+
+For above operations create following menu:
+Enter the type of Account:
+
+** SA for Saving Account Operation
+**CA for Current Account Operation
+
+1.	Deposit
+2.	Withdraw
+3.	Calculate Rate of Interest
+
+Enter the choice for operation:
+code:
+class Account:
+
+    def __init__(self):
+        self.balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+        print("Amount Deposited:", amount)
+        print("Current Balance:", self.balance)
+
+    def withdraw(self, amount, min_balance):
+        if self.balance - amount < min_balance:
+            print("Cannot withdraw! Minimum balance must be maintained.")
+        else:
+            self.balance -= amount
+            print("Amount Withdrawn:", amount)
+            print("Current Balance:", self.balance)
+
+    def interest(self, rate):
+        interest_amount = self.balance * rate / 100
+        print("Interest Amount:", interest_amount)
+
+
+# Saving Account
+class SavingAccount(Account):
+
+    def __init__(self):
+        super().__init__()
+        self.min_balance = 1000
+        self.rate = 10
+
+
+# Current Account
+class CurrentAccount(Account):
+
+    def __init__(self):
+        super().__init__()
+        self.min_balance = 10000
+        self.rate = 15
+
+
+# Main Program
+acc_type = input("Enter Account Type (SA/CA): ").upper()
+
+if acc_type == "SA":
+    acc = SavingAccount()
+elif acc_type == "CA":
+    acc = CurrentAccount()
+else:
+    print("Invalid Account Type!")
+    exit()
+
+while True:
+    print("\n1. Deposit")
+    print("2. Withdraw")
+    print("3. Calculate Interest")
+    print("4. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        amt = float(input("Enter amount to deposit: "))
+        acc.deposit(amt)
+
+    elif choice == 2:
+        amt = float(input("Enter amount to withdraw: "))
+        acc.withdraw(amt, acc.min_balance)
+
+    elif choice == 3:
+        acc.interest(acc.rate)
+
+    elif choice == 4:
+        print("Thank you!")
+        break
+
+    else:
+        print("Invalid choice!")
+=========================================================================
