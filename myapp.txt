@@ -1,0 +1,765 @@
+1) Positive, negative and zero
+class CheckNumber:
+
+def check(self, num):
+if num > 0:
+print("Number is Positive")
+elif num < 0:
+print("Number is Negative")
+else:
+print("Number is Zero")
+
+
+# Main
+obj = CheckNumber()
+num = int(input("Enter a number: "))
+obj.check(num)
+
+==========2)  palindrom number:=============
+class Palindrome:
+    def check(self, num):
+        temp = num
+        reverse = 0
+        while num > 0:
+            rem = num % 10
+            reverse = reverse * 10 + rem
+            num = num // 10
+        if temp == reverse:
+            print("Palindrome Number")
+        else:
+            print("Not a Palindrome")
+# Main
+obj = Palindrome()
+num = int(input("Enter a number: "))
+obj.check(num)
+
+
+
+    def calculate(self, numbers):
+        total = 0
+        for n in numbers:
+            total += n
+        print("Sum of list:", total)
+# Main
+obj = SumList()
+n = int(input("How many elements? "))
+numbers = []
+for i in range(n):
+    val = int(input(f"Enter element {i+1}: "))
+    numbers.append(val)
+obj.calculate(numbers)
+
+=========3) square of 2 number:===========
+class Square:
+    def find_square(self, num):
+        return num * num
+# Main
+obj = Square()
+
+n1 = int(input("Enter first number: "))
+n2 = int(input("Enter second number: "))
+
+print("Square of first number:", obj.find_square(n1))
+print("Square of second number:", obj.find_square(n2))
+
+===========4) student total and percentage (one student):=============
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks   # list of marks
+
+    def calculate(self):
+        self.total = sum(self.marks)
+        self.percentage = self.total / len(self.marks)
+
+    def display(self):
+        print("\n--- Student Details ---")
+        print("Name:", self.name)
+        print("Marks:", self.marks)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage)
+# -------- Main Program --------
+name = input("Enter name: ")
+n = int(input("Enter number of subjects (2 or 3): "))
+marks = []
+for i in range(n):
+    m = int(input(f"Enter marks of subject {i+1}: "))
+    marks.append(m)
+s1 = Student(name, marks)
+s1.calculate()
+s1.display()
+
+=============6) multiple student records (calculate total, percentage)============= 
+class Student:
+
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def calculate(self):
+        self.total = sum(self.marks)
+        self.percentage = self.total / len(self.marks)
+
+    def display(self):
+        print("\n--- Student Details ---")
+        print("Name:", self.name)
+        print("Marks:", self.marks)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage)
+
+students = []
+
+num_students = int(input("Enter number of students: "))
+
+for i in range(num_students):
+    print(f"\nEnter details for student {i+1}")
+    
+    name = input("Enter name: ")
+    
+    n = int(input("Enter number of subjects (2 or 3): "))
+    marks = []
+    
+    for j in range(n):
+        m = int(input(f"Enter marks of subject {j+1}: "))
+        marks.append(m)
+
+    s = Student(name, marks)
+    s.calculate()
+    students.append(s)
+
+
+# Display all students
+print("\n======= All Student Records =======")
+for s in students:
+    s.display()
+
+==========7) multiple students total, percentage (menu driven)===========
+class Student:
+
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def calculate(self):
+        self.total = sum(self.marks)
+        self.percentage = self.total / len(self.marks)
+
+    def display(self):
+        print("\nName:", self.name)
+        print("Marks:", self.marks)
+        print("Total:", self.total)
+        print("Percentage:", self.percentage)
+
+
+students = []
+while True:
+    print("\n===== MENU =====")
+    print("1. Add Student")
+    print("2. Display All Students")
+    print("3. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+    # Add Student
+    if choice == 1:
+        name = input("Enter name: ")
+
+        n = int(input("Enter number of subjects: "))
+        marks = []
+
+        for i in range(n):
+            m = int(input(f"Enter marks of subject {i+1}: "))
+            marks.append(m)
+
+        s = Student(name, marks)
+        s.calculate()
+        students.append(s)
+
+        print("Student added successfully!")
+
+    # Display Students
+    elif choice == 2:
+        if len(students) == 0:
+            print("No records found!")
+        else:
+            print("\n--- All Students ---")
+            for s in students:
+                s.display()
+
+    # Exit
+    elif choice == 3:
+        print("Exiting program...")
+        break
+
+    else:
+        print("Invalid choice!")
+
+========8) find rectangle area and perimiter:===========
+class Rectangle:
+
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+    def display(self):
+        print("Area:", self.area())
+        print("Perimeter:", self.perimeter())
+
+
+# User Input
+l = int(input("Enter length: "))
+w = int(input("Enter width: "))
+
+# Object Creation
+r1 = Rectangle(l, w)
+
+# Display Result
+r1.display()
+
+===========9) bank deposite:=========
+class BankAccount:
+
+    def __init__(self, name, balance=0):
+        self.name = name
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        print("Amount deposited:", amount)
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print("Withdrawn:", amount)
+        else:
+            print("Insufficient balance")
+    def display(self):
+        print("Account Holder:", self.name)
+        print("Current Balance:", self.balance)
+# User Input
+name = input("Enter account holder name: ")
+b1 = BankAccount(name)
+b1.deposit(1000)
+b1.withdraw(500)
+b1.display()
+
+=========10) if num even -> factorial and num odd -> find series=========
+class NumberOperation:
+ 
+    def __init__(self):
+        self.num = int(input("Enter a number: "))
+    def check(self):
+        if self.num % 2 == 0:
+            self.factorial()
+        else:
+            self.series()
+    def factorial(self):
+        fact = 1
+        for i in range(1, self.num + 1):
+            fact *= i
+        print("Factorial is:", fact)
+    def series(self):
+        print("Series:", end=" ")
+        for i in range(self.num, 0, -1):
+            print(i, end=" ")
+# Object creation
+obj = NumberOperation()
+obj.check()
+
+========11) addition , sub , multiplication , division========
+class Calculator:
+    def addition(self, a, b):
+        return a + b
+    def subtraction(self, a, b):
+        return a - b
+    def multiplication(self, a, b):
+        return a * b
+    def division(self, a, b):
+        if b == 0:
+            return "Cannot divide by zero"
+        return a / b
+    def integer_division(self, a, b):
+        if b == 0:
+            return "Cannot divide by zero"
+        return a // b
+# Create object
+calc = Calculator()
+ 
+while True:
+    print("\n--- MENU ---")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Integer Division")
+    print("6. Exit")
+    choice = int(input("Enter your choice: "))
+    if choice == 6:
+        print("Exiting program...")
+        break
+ 
+    a = float(input("Enter first number: "))
+    b = float(input("Enter second number: "))
+    if choice == 1:
+        print("Result:", calc.addition(a, b))
+    elif choice == 2:
+        print("Result:", calc.subtraction(a, b))
+    elif choice == 3:
+        print("Result:", calc.multiplication(a, b))
+    elif choice == 4:
+        print("Result:", calc.division(a, b))
+    elif choice == 5:
+        print("Result:", calc.integer_division(a, b))
+    else:
+        print("Invalid choice! Please try again.")
+
+============12)  Define a Super class Account with methods interest(), deposit() and withdraw().================
+class Account:
+ 
+    def __init__(self):
+        self.balance = 0
+ 
+    def deposit(self, amount):
+        self.balance += amount
+        print("Amount Deposited:", amount)
+        print("Current Balance:", self.balance)
+ 
+    def withdraw(self, amount, min_balance):
+        if self.balance - amount < min_balance:
+            print("Cannot withdraw! Minimum balance must be maintained.")
+        else:
+            self.balance -= amount
+            print("Amount Withdrawn:", amount)
+            print("Current Balance:", self.balance)
+ 
+    def interest(self, rate):
+        interest_amount = self.balance * rate / 100
+        print("Interest Amount:", interest_amount)
+ 
+# Saving Account
+class SavingAccount(Account):
+ 
+    def __init__(self):
+        super().__init__()
+        self.min_balance = 1000
+        self.rate = 10
+ 
+ 
+# Current Account
+class CurrentAccount(Account):
+ 
+    def __init__(self):
+        super().__init__()
+        self.min_balance = 10000
+        self.rate = 15
+ 
+ 
+# Main Program
+acc_type = input("Enter Account Type (SA/CA): ").upper()
+ 
+if acc_type == "SA":
+    acc = SavingAccount()
+elif acc_type == "CA":
+    acc = CurrentAccount()
+else:
+    print("Invalid Account Type!")
+    exit()
+while True:
+    print("\n1. Deposit")
+    print("2. Withdraw")
+    print("3. Calculate Interest")
+    print("4. Exit")
+    choice = int(input("Enter your choice: "))
+    if choice == 1:
+        amt = float(input("Enter amount to deposit: "))
+        acc.deposit(amt)
+    elif choice == 2:
+        amt = float(input("Enter amount to withdraw: "))
+        acc.withdraw(amt, acc.min_balance)
+    elif choice == 3:
+        acc.interest(acc.rate)
+    elif choice == 4:
+        print("Thank you!")
+        break
+    else:
+        print("Invalid choice!")
+
+===========13) Create a class Area and write appropriate methods to calculate area of circle============
+class Area:
+    # Method to calculate area of circle
+    def circle(self):
+        r = float(input("Enter radius: "))
+        area = 3.14 * r * r
+        print("Area of Circle:", area)
+# Object creation
+a1 = Area()
+# Method call
+a1.circle()
+2.Create a class to enter 3 different values and find out largest of three out of them.
+code:
+class Largest:
+    def __init__(self):
+        self.a = 0
+        self.b = 0
+        self.c = 0
+ 
+    def input_values(self):
+        self.a = int(input("Enter first number: "))
+        self.b = int(input("Enter second number: "))
+        self.c = int(input("Enter third number: "))
+ 
+    def find_largest(self):
+        if self.a >= self.b and self.a >= self.c:
+            print("Largest number is:", self.a)
+        elif self.b >= self.a and self.b >= self.c:
+            print("Largest number is:", self.b)
+        else:
+            print("Largest number is:", self.c)
+# Object creation
+obj = Largest()
+obj.input_values()
+obj.find_largest()
+
+=====14). Create a d class which as 2 lists as a member of them. Print the list whose sum is higher than another.========
+code:
+class CompareLists:
+ 
+    def __init__(self):
+        self.list1 = []
+        self.list2 = []
+ 
+    def input_lists(self):
+        self.list1 = list(map(int, input("Enter elements of list1: ").split()))
+        self.list2 = list(map(int, input("Enter elements of list2: ").split()))
+ 
+    def compare_lists(self):
+        sum1 = sum(self.list1)
+        sum2 = sum(self.list2)
+ 
+        if sum1 > sum2:
+            print("List with higher sum is:", self.list1)
+        elif sum2 > sum1:
+            print("List with higher sum is:", self.list2)
+        else:
+            print("Both lists have equal sum")
+ 
+# Object creation
+obj = CompareLists()
+obj.input_lists()
+obj.compare_lists()
+
+=======15) compare 2 list:============ 
+class CompareLists:
+    def __init__(self, list1, list2):
+        self.list1 = list1
+        self.list2 = list2
+    def compare(self):
+        sum1 = sum(self.list1)
+        sum2 = sum(self.list2)
+        if sum1 > sum2:
+            print("List1 has higher sum:", self.list1)
+        elif sum2 > sum1:
+            print("List2 has higher sum:", self.list2)
+        else:
+            print("Both lists have equal sum")
+# Taking input
+l1 = list(map(int, input("Enter elements of list1: ").split()))
+l2 = list(map(int, input("Enter elements of list2: ").split()))
+# Object creation
+obj = CompareLists(l1, l2)
+obj.compare()
+
+=======16)========
+class Bill:
+
+    def __init__(self):
+        self.name = ""
+        self.qty = 0
+        self.price = 0
+        self.total = 0
+
+    def getDetails(self):
+        self.name = input("Enter product name: ")
+        self.qty = int(input("Enter quantity: "))
+        self.price = float(input("Enter price: "))
+
+    def billGenerate(self):
+        self.total = self.qty * self.price
+
+    def display(self):
+        print("\n--- Invoice ---")
+        print("Product:", self.name)
+        print("Quantity:", self.qty)
+        print("Price:", self.price)
+        print("Total:", self.total)
+
+
+b = Bill()
+
+while True:
+    print("\n1. Enter details")
+    print("2. Final Bill")
+    print("3. Display")
+    print("4. Exit")
+
+    ch = int(input("Enter choice: "))
+
+    if ch == 1:
+        b.getDetails()
+    elif ch == 2:
+        b.billGenerate()
+        print("Bill calculated")
+    elif ch == 3:
+        b.display()
+    elif ch == 4:
+        break
+    else:
+        print("Invalid choice")
+ 
+=================Preprocessing:============
+
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("/gdrive/MyDrive/Data.csv")
+df.tail()
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(missing_values=np.nan,strategy='mean')
+imputer.fit(x[:,1:3])
+x[:,1:3]=imputer.transform(x[:,1:3])
+print(x)
+
+# Encoding categorical data
+# Encoding the Independent Variable
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0])], remainder='passthrough')
+x = np.array(ct.fit_transform(x))
+print(x)
+# Encoding the Dependent Variable
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+y = le.fit_transform(y)
+print(y)
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 1)
+print(X_train)
+print(X_test)
+print(y_train)
+print(y_test)
+
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train[:, 3:] = sc.fit_transform(X_train[:, 3:])
+X_test[:, 3:] = sc.transform(X_test[:, 3:])
+print(X_train)
+print(X_test)
+
+============preprocessing with  LinearRegression:================
+import numpy as np
+import matplotlib.pyplot as plt
+df = pd.read_csv("/gdrive/MyDrive/Salary_Data.csv")
+X = df.iloc[:, :-1].values
+y = df.iloc[:, -1].values
+
+# Splitting the dataset into the Training set and Test set
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+# Training the Simple Linear Regression model on the Training set
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+
+# Predicting the Test set results
+y_pred = regressor.predict(X_test)
+print(y_test)
+print(y_pred)
+
+# Visualising the Training set results
+plt.scatter(X_train, y_train, color = 'red')
+plt.plot(X_train, regressor.predict(X_train), color = 'blue')
+plt.title('Salary vs Experience (Training set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
+# Visualising the Test set results
+plt.scatter(X_test, y_test, color = 'red')
+plt.plot(X_test, regressor.predict(X_test), color = 'blue')
+plt.title('Salary vs Experience (Test set)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
+from sklearn.metrics import r2_score
+# Calculate R-squared
+r2 = r2_score(y_test, y_pred)
+print(r2)
+
+=========preprocessing with  LogisticRegression:================
+# Importing libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load dataset (example: Social Network Ads dataset)
+df = pd.read_csv("Social_Network_Ads.csv")
+
+# Features and target
+X = df.iloc[:, :-1].values   # Age, Salary
+y = df.iloc[:, -1].values    # Purchased (0 or 1)
+
+# Splitting dataset
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0
+)
+
+# Feature Scaling (IMPORTANT in Logistic Regression)
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Training Logistic Regression
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Prediction
+y_pred = model.predict(X_test)
+
+print("Actual values:", y_test)
+print("Predicted values:", y_pred)
+
+# Accuracy
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(y_test, y_pred)
+print("Accuracy:", acc)
+
+====================================
+1.Use Iris.csv dataset and perform data preprocessing operation using StandardScaler.
+from google.colab import files
+uploaded = files.upload()
+
+# practical 1
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# Load dataset
+df = pd.read_csv("Iris.csv")
+
+# Separate features
+X = df.drop(['Id', 'Species'], axis=1)
+
+# Apply StandardScaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Convert to DataFrame
+X_scaled_df = pd.DataFrame(X_scaled, columns=X.columns)
+
+print("Original Data:\n", X.head())
+print("\nScaled Data:\n", X_scaled_df.head())
+================================================================================
+2.Import required libraries - Pandas, Numpy, and required classes for this task - ColumnTransformer, OneHotEncoder, LabelEncoder.
+from google.colab import files
+uploaded = files.upload()
+
+# Import Required Libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load Dataset
+# IMPORTANT: Wine dataset uses ";" as delimiter
+df = pd.read_csv("winequality-red.csv", delimiter=';')
+
+print("First 5 Rows of Dataset:\n")
+print(df.head())
+
+# Separate Features and Target
+X = df.drop("quality", axis=1)   # Independent variables
+y = df["quality"]               # Target variable
+
+# Split Dataset into 80% Training and 20% Testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Create StandardScaler Object
+scaler = StandardScaler()
+
+# Fit and Transform Training Data
+X_train_scaled = scaler.fit_transform(X_train)
+
+# Transform Test Data
+X_test_scaled = scaler.transform(X_test)
+
+# Print Scaled Data
+print("\nScaled Training Data (First 5 Rows):\n")
+print(X_train_scaled[:5])
+
+print("\nScaled Test Data (First 5 Rows):\n")
+print(X_test_scaled[:5])
+======================================================================================3.1.	Import the necessary libraries for data preprocessing, including the StandardScaler and train_test_split classes.
+from google.colab import files
+uploaded = files.upload()
+
+# Import Required Libraries
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load Dataset
+# IMPORTANT: Wine dataset uses ";" as delimiter
+df = pd.read_csv("winequality-red.csv", delimiter=';')
+
+print("First 5 Rows of Dataset:\n")
+print(df.head())
+
+# Separate Features and Target
+X = df.drop("quality", axis=1)   # Independent variables
+y = df["quality"]               # Target variable
+
+# Split Dataset into 80% Training and 20% Testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Create StandardScaler Object
+scaler = StandardScaler()
+
+# Fit and Transform Training Data
+X_train_scaled = scaler.fit_transform(X_train)
+
+# Transform Test Data
+X_test_scaled = scaler.transform(X_test)
+
+# Print Scaled Data
+print("\nScaled Training Data (First 5 Rows):\n")
+print(X_train_scaled[:5])
+
+print("\nScaled Test Data (First 5 Rows):\n")
+print(X_test_scaled[:5])
+	
+
+ 
+
+
+
+
+
